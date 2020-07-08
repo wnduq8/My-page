@@ -130,31 +130,25 @@ button {
     padding: 0px;
 }
 
-/* Section common */
-.section {
-    padding: 50px;
-    text-align: center;
-    margin: auto;
-}
-
-.section__container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-
 /* Navbar */
 #navbar {
+    position: fixed;
+    width: 100%;
     display: flex;
-    position: sticky;
-    top: 0;
-    z-index: 1;
     justify-content: space-between;
-    background-color: rgb(97, 97, 189);
+    background-color: transparent;
     align-items: center;
     color: var(--color-white);
     padding: 16px;
+    transition: all var(--animation-duration) ease-in-out;
+    z-index: 1;
 }
+
+#navbar.navbar--dark {
+    background-color: rgb(97, 97, 189);
+    padding: 8px;
+}
+
 
 .favicon__img {
     width: 25px;
@@ -163,6 +157,7 @@ button {
 
 .navbar__menu {
     display: flex;
+    margin-right: 8px;
 }
 
 .navbar__menu__item {
@@ -199,6 +194,7 @@ button {
 #Home {
     background: url(imgs/background.png) center/cover no-repeat;
     padding: 40px;
+    padding-top: 120px;
     text-align: center;
 }
 
@@ -222,6 +218,18 @@ button {
     padding: 8px 12px;
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
+}
+
+/* Section common */
+.section {
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+}
+
+.section__container {
+    max-width: 1200px;
+    margin: auto;
 }
 
 /* About */
@@ -461,15 +469,36 @@ button {
     transition: all var(--animation-duration) ease-in;
 }
 
+/* scroll */
+.arrow_up {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 70px;
+    height: 70px;
+    font-size: 50px;
+    background-color: cornflowerblue;
+    color: var(--color-white);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--animation-duration) ease-in;
+}
+
+.arrow_up.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
     .navbar__toggle-btn {
         display: block;
+
     }
 
     #navbar {
-        position: sticky;
-        top: 0;
+        position: fixed;
         z-index: 1;
         flex-direction: column;
         align-items: flex-start;
@@ -500,5 +529,10 @@ button {
 
     .project {
         flex-grow: 1;
+    }
+
+    .testimonial__img {
+        width: 80px;
+        height: 80px;
     }
 }
